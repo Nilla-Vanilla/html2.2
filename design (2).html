@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petalburg | Design</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* This ensures the grid handles 10 items in 5 rows of 2 */
+		/* --- TTYD CURTAIN OVERLAY --- */
+#intro-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: url('curtain.avif') no-repeat center bottom;
+    background-size: cover;
+    z-index: 10000;
+    display: none; 
+}
+
+.curtain-rise-animation {
+    animation: ttydRise 2.0s cubic-bezier(0.45, 0.05, 0.55, 0.95) forwards;
+}
+
+@keyframes ttydRise {
+    0% { transform: translateY(0); }
+    60% { transform: translateY(-30%); }
+    100% { transform: translateY(-100%); }
+}
+
+/* Ensure the main content can be hidden/revealed */
+#main-site {
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.reveal-site {
+    opacity: 1 !important;
+}
+		
+        .design-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 60px; /* Matching your modern wide layout */
+            padding: 40px 0;
+        }
+
+        .design-item {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        /* The container that fixes the image sizing issue */
+        .img-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1; /* Keeps boxes square and uniform */
+            background: #000;
+            border-radius: 30px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bg-blur {
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            object-fit: cover;
+            filter: blur(30px) brightness(0.7);
+            opacity: 0.5;
+            z-index: 1;
+        }
+
+        .main-img {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain; /* SHOWS ENTIRE IMAGE regardless of size */
+            z-index: 2;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
+        }
+
+        .item-text {
+            margin-top: 20px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--text-main);
+        }
+		@keyframes popIn {
+        0% { transform: scale(0.8); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+
+    .design-item { 
+        opacity: 0; 
+        animation: popIn 0.5s cubic-bezier(0.17, 0.67, 0.83, 0.67) forwards; 
+    }
+
+    /* Staggered delay for the 10 items */
+    .design-item:nth-child(1) { animation-delay: 0.1s; }
+    .design-item:nth-child(2) { animation-delay: 0.2s; }
+    .design-item:nth-child(3) { animation-delay: 0.3s; }
+    .design-item:nth-child(4) { animation-delay: 0.4s; }
+    .design-item:nth-child(5) { animation-delay: 0.5s; }
+    .design-item:nth-child(6) { animation-delay: 0.6s; }
+    .design-item:nth-child(7) { animation-delay: 0.7s; }
+    .design-item:nth-child(8) { animation-delay: 0.8s; }
+    .design-item:nth-child(9) { animation-delay: 0.9s; }
+    .design-item:nth-child(10) { animation-delay: 1.0s; }
+    </style>
+</head>
+<body class="design-page"> <div id="intro-overlay"></div>
+    <header>
+        <div class="brand-title">Petalburg</div>
+        <nav>
+            <a href="index.html">HOME</a>
+            <a href="photography.html">PHOTOGRAPHY</a>
+            <a href="design.html">DESIGN</a>
+            <a href="contact.html">CONTACT</a>
+        </nav>
+        <div class="header-spacer"></div>
+    </header>
+
+    <main class="container" id="main-site">
+        <h1>Design Portfolio</h1>
+        <div class="design-grid">
+            
+            <div class="design-item">
+                <div class="img-wrapper">
+                    <img src="stuffyou.png" class="bg-blur">
+                    <img src="stuffyou.png" class="main-img">
+                </div>
+                <p class="item-text">Favorite Things Collage</p>
+            </div>
+
+            <div class="design-item">
+                <div class="img-wrapper">
+                    <img src="lightningparakoopers.png" class="bg-blur">
+                    <img src="lightningparakoopers.png" class="main-img">
+                </div>
+                <p class="item-text">Kooper, Parakarry, Koops, and Pikachu combined</p>
+            </div>
+
+            <div class="design-item">
+                <div class="img-wrapper">
+                    <img src="odd.png" class="bg-blur">
+                    <img src="odd.png" class="main-img">
+                </div>
+                <p class="item-text">Rock Band</p>
+            </div>
+
+            <div class="design-item">
+                <div class="img-wrapper">
+                    <img src="plantplants.png" class="bg-blur">
+                    <img src="plantplants.png" class="main-img">
+                </div>
+                <p class="item-text">Revitalized Earth</p>
+            </div>
+
+            <div class="design-item">
+                <div class="img-wrapper">
+                    <img src="pinkpurple.png" class="bg-blur">
+                    <img src="pinkpurple.png" class="main-img">
+                </div>
+                <p class="item-text">Purple/Pink Flowers</p>
+            </div>
+
+            <div class="design-item">
+                <div class="img-wrapper">
+                    <img src="mountain.png" class="bg-blur">
+                    <img src="mountain.png" class="main-img">
+                </div>
+                <p class="item-text">Mountain Painting (er, copying)</p>
+            </div>
+
+            <div class="design-item">
+                <div class="img-wrapper">
+                    <img src="badtree.png" class="bg-blur">
+                    <img src="badtree.png" class="main-img">
+                </div>
+                <p class="item-text">Tree Painting (but made by dollar-store painter)</p>
+            </div>
+
+            <div class="design-item">
+                <div class="img-wrapper">
+                    <img src="greenhill.png" class="bg-blur">
+                    <img src="greenhill.png" class="main-img">
+                </div>
+                <p class="item-text">Happy Green Hills</p>
+            </div>
+
+            <div class="design-item">
+                <div class="img-wrapper">
+                    <img src="transform.png" class="bg-blur">
+                    <img src="transform.png" class="main-img">
+                </div>
+                <p class="item-text">Just Shapes?</p>
+            </div>
+
+            <div class="design-item">
+                <div class="img-wrapper">
+                    <img src="koops.png" class="bg-blur">
+                    <img src="koops.png" class="main-img">
+                </div>
+                <p class="item-text">Koops but he's separated</p>
+            </div>
+
+        </div>
+    </main>
+	
+	<script src="angry.js"></script>
+</body>
+</html>

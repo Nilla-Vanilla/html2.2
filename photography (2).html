@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petalburg | Photography</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- Photography Slider Logic (Fixed for 7 Slides) --- */
+		/* --- TTYD CURTAIN OVERLAY --- */
+#intro-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: url('curtain.avif') no-repeat center bottom;
+    background-size: cover;
+    z-index: 10000;
+    display: none; 
+}
+
+.curtain-rise-animation {
+    animation: ttydRise 2.0s cubic-bezier(0.45, 0.05, 0.55, 0.95) forwards;
+}
+
+@keyframes ttydRise {
+    0% { transform: translateY(0); }
+    60% { transform: translateY(-30%); }
+    100% { transform: translateY(-100%); }
+}
+
+/* Ensure the main content can be hidden/revealed */
+#main-site {
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+
+.reveal-site {
+    opacity: 1 !important;
+}
+		
+        .slider-viewport {
+            width: 100%;
+            max-width: 1200px; /* Made it slightly wider for the modern look */
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+            background: #000;
+        }
+
+        .slider-track {
+            display: flex;
+            /* width = 7 slides * 100% = 700% */
+            width: 700%; 
+            animation: slideAnimation 28s infinite ease-in-out;
+        }
+
+        .slide {
+            width: 14.2857%; /* 100 divided by 7 */
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #000;
+        }
+
+        /* --- Blurred Backdrop Effect --- */
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: 500px; /* Increased height for a more modern feel */
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bg-blur {
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            object-fit: cover;
+            filter: blur(40px) brightness(0.7);
+            z-index: 1;
+            opacity: 0.6;
+        }
+
+        .main-img {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            z-index: 2;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+        }
+
+        .slide p {
+            padding: 30px;
+            margin: 0;
+            background: var(--paper-white);
+            width: 100%;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-main);
+        }
+
+        /* --- Animation Logic for 7 Slides --- */
+        @keyframes slideAnimation {
+            /* Slide 1 */
+            0%, 10% { transform: translateX(0%); }
+            /* Slide 2 */
+            14.28%, 24.28% { transform: translateX(-14.2857%); }
+            /* Slide 3 */
+            28.57%, 38.57% { transform: translateX(-28.5714%); }
+            /* Slide 4 */
+            42.85%, 52.85% { transform: translateX(-42.8571%); }
+            /* Slide 5 */
+            57.14%, 67.14% { transform: translateX(-57.1428%); }
+            /* Slide 6 */
+            71.42%, 81.42% { transform: translateX(-71.4285%); }
+            /* Slide 7 */
+            85.71%, 95.71% { transform: translateX(-85.7142%); }
+            /* Loop back */
+            100% { transform: translateX(0%); }
+        }
+    </style>
+</head>
+<body class="photography-page"> <div id="intro-overlay"></div>
+    <header>
+        <div class="brand-title">Petalburg</div>
+        <nav>
+            <a href="index.html">HOME</a>
+            <a href="photography.html">PHOTOGRAPHY</a>
+            <a href="design.html">DESIGN</a>
+            <a href="contact.html">CONTACT</a>
+        </nav>
+        <div class="header-spacer"></div>
+    </header>
+
+    <main class="container" id="main-site">
+        <h1>Photography</h1>
+        
+        <div class="slider-viewport">
+            <div class="slider-track">
+                
+                <div class="slide">
+                    <div class="image-container">
+                        <img src="field.png" class="bg-blur">
+                        <img src="field.png" class="main-img">
+                    </div>
+                    <p>This is the multipurpose field, where you can play any sport you could wish! Always be a "student" and don't hurt yourself.</p>
+                </div>
+
+                <div class="slide">
+                    <div class="image-container">
+                        <img src="brighteyes.png" class="bg-blur">
+                        <img src="brighteyes.png" class="main-img">
+                    </div>
+                    <p>Bright eyes... If you know the song.</p>
+                </div>
+
+                <div class="slide">
+                    <div class="image-container">
+                        <img src="crossed.png" class="bg-blur">
+                        <img src="crossed.png" class="main-img">
+                    </div>
+                    <p>He has the glory behind his back.</p>
+                </div>
+                
+                <div class="slide">
+                    <div class="image-container">
+                        <img src="thinking.png" class="bg-blur">
+                        <img src="thinking.png" class="main-img">
+                    </div>
+                    <p>When you don't wanna take a math test so you go to the bathroom and end up doing this.</p>
+                </div>
+                
+                <div class="slide">
+                    <div class="image-container">
+                        <img src="boss.png" class="bg-blur">
+                        <img src="boss.png" class="main-img">
+                    </div>
+                    <p>If you stay on the bleachers for too long, he'll find you.</p>
+                </div>
+                
+                <div class="slide">
+                    <div class="image-container">
+                        <img src="doubles.png" class="bg-blur">
+                        <img src="doubles.png" class="main-img">
+                    </div>
+                    <p>Two is one, one is two.</p>
+                </div>
+                
+                <div class="slide">
+                    <div class="image-container">
+                        <img src="spike.png" class="bg-blur">
+                        <img src="spike.png" class="main-img">
+                    </div>
+                    <p>Make sure you know how to hit the volleyball! What's a spike? Or a Lakilester?</p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+	
+	<script src="angry.js"></script>
+</body>
+</html>

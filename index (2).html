@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Petalburg!</title>
+    <link rel="stylesheet" href="style.css">
+	<style>
+    /* --- TTYD CURTAIN OVERLAY --- */
+    #intro-overlay {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: url('curtain.avif') no-repeat center bottom;
+        background-size: cover;
+        z-index: 10000;
+        display: none; /* Controlled by JS */
+    }
+
+    /* The Authentic TTYD Rising Animation */
+    .curtain-rise-animation {
+        animation: ttydRise 2.0s cubic-bezier(0.45, 0.05, 0.55, 0.95) forwards;
+    }
+
+    @keyframes ttydRise {
+        0% { transform: translateY(0); }
+        /* First Pause/Stutter */
+        60% { transform: translateY(-30%); }
+        /* Final Exit */
+        100% { transform: translateY(-100%); }
+    }
+
+    /* Main site reveal */
+    .container {
+            opacity: 1;			/* Default to visible for returning users */
+            transform: scale(1);
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        /* Initial state for first-time animation */
+        .first-load .container {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        .reveal-site {
+            opacity: 1 !important;
+            transform: scale(1) !important;
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal-site .item {
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+
+        .item:nth-child(1) { animation-delay: 0.8s; }
+        .item:nth-child(2) { animation-delay: 1.0s; }
+        .item:nth-child(3) { animation-delay: 1.2s; }
+
+        .img-wrapper {
+            position: relative; width: 100%; aspect-ratio: 16 / 9;
+            background: #000; border-radius: 15px; overflow: hidden;
+            display: flex; align-items: center; justify-content: center; margin-bottom: 15px;
+            border: none;
+            box-shadow: none;
+        }
+        
+        .bg-blur {
+            position: absolute; width: 110%; height: 110%;
+            object-fit: cover; filter: blur(20px) brightness(0.6); z-index: 1;
+        }
+        
+        .feature-img {
+            position: relative; max-width: 100%; max-height: 100%;
+            object-fit: contain; z-index: 2;
+        }
+</style>
+
+<div id="intro-overlay"></div>
+
+</head>
+<body class="first-load"> <div id="intro-overlay"></div>
+
+    <header>
+        <div class="brand-title">Petalburg</div>
+        <nav>
+            <a href="index.html">HOME</a>
+            <a href="photography.html">PHOTOGRAPHY</a>
+            <a href="design.html">DESIGN</a>
+            <a href="contact.html">CONTACT</a>
+        </nav>
+        <div class="header-spacer"></div>
+    </header>
+
+    <main class="container" id="main-site">
+        <h1>Home of Petalburg</h1>
+        <p>Lucky you found this website, eh? If you're wondering about the colors, it's because of a guy named Koops. And you may be saying to yourself, "But isn't that weird?" Honestly, heck yeah. But have you stopped and thought about your idol sometimes? Once? Twice? Even more? Anyways, if you're here, congrats! Here are all the photos and images I've used in Digital Media Arts. Let's go, Class of 2029!</p>
+        
+        <div class="grid">
+    <div class="item">
+        <div class="img-wrapper">
+            <img src="businessmanonadate.png" class="bg-blur">
+            <img src="businessmanonadate.png" class="feature-img" alt="Feature One">
+        </div>
+        <p><img src="blue.png" class="ttyd-dot">Latest Photography Work</p>
+    </div>
+
+    <div class="item">
+        <div class="img-wrapper">
+            <img src="lightningparakoopers.png" class="bg-blur">
+            <img src="lightningparakoopers.png" class="feature-img" alt="Feature Two">
+        </div>
+        <p><img src="yellow.png" class="ttyd-dot">New Graphic Designs</p>
+    </div>
+
+    <div class="item">
+        <div class="img-wrapper">
+            <img src="face.png" class="bg-blur">
+            <img src="face.png" class="feature-img" alt="Feature Three">
+        </div>
+        <p><img src="green.png" class="ttyd-dot">Contact for Commissions</p>
+    </div>
+</div>
+    </main>
+
+	<script src="angry.js"></script>
+</body>
+</html>
